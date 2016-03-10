@@ -24,7 +24,8 @@ build:
   steps:
     # Sets the go workspace and places you package
     # at the right place in the workspace tree
-    - setup-go-workspace
+    - setup-go-workspace:
+        package-dir: github.com/shipyard/shipyard
 
     # Gets the dependencies
     - script:
@@ -37,6 +38,7 @@ build:
         name: go build 
         code: |
           #go build ./...
+          
           make all
 
     # Test the project
