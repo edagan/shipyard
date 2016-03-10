@@ -33,6 +33,7 @@ build:
         code: |
           go get github.com/tools/godep
           apt-get update && apt-get install -y bash node
+          npm install bower -g
 
     # Build the project
     - script:
