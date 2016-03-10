@@ -30,16 +30,18 @@ build:
     - script:
         name: go get
         code: |
-          go get github.com/tools/godep
+          #go get github.com/tools/godep
 
     # Build the project
     - script:
         name: go build 
         code: |
-          go build ./...
+          #go build ./...
+          make all
 
     # Test the project
     - script:
         name: go test
         code: |
-          go test ./...
+          #go test ./...
+          make test
