@@ -30,11 +30,11 @@ build:
     - script:
         name: go get
         code: |
-          go get
+          go get ./Godeps/_workspace/...
 
     # Build the project
     - script:
-        name: go build
+        name: go build 
         code: |
           go build ./...
 
