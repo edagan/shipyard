@@ -57,3 +57,4 @@ build:
         code: |
           #go test ./...
           make test
+          env
