@@ -31,8 +31,9 @@ build:
     - script:
         name: go get
         code: |
+          cat /etc/lsb-release
           go get github.com/tools/godep
-          apt-get update && apt-get install -y bash node
+          apt-get update && apt-get install -y bash nodejs
           npm install bower -g
 
     # Build the project
