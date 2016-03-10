@@ -10,12 +10,17 @@ box: golang
 
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
-# services:
+ services:
+    - id: rethinkdb
+          tag: latest
+      
     # - postgres
     # http://devcenter.wercker.com/docs/services/postgresql.html
 
     # - mongodb
     # http://devcenter.wercker.com/docs/services/mongodb.html
+
+    
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
