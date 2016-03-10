@@ -33,9 +33,9 @@ build:
         code: |
           go get github.com/tools/godep
           apt-get update && apt-get install -y bash curl 
-		  #curl -sL https://deb.nodesource.com/setup_5.x | bash -
+          #curl -sL https://deb.nodesource.com/setup_5.x | bash -
           bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
-		  apt-get install -y nodejs
+          apt-get install -y nodejs
           npm install bower -g
 
     # Build the project
