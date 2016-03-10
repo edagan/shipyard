@@ -30,7 +30,7 @@ build:
     - script:
         name: go get
         code: |
-          go get ./Godeps/_workspace/...
+          go get github.com/tools/godep
 
     # Build the project
     - script:
