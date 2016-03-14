@@ -60,3 +60,4 @@ build:
           #go test ./...
           make test
           env
+          cd controller && ./controller -D server --rethinkdb-addr $RETHINKDB_PORT_28015_TCP_ADDR:$RETHINKDB_PORT_29015_TCP_PORT -d
