@@ -50,6 +50,8 @@ build:
           #go build ./...
           
           make all
+          pwd
+          ls -l
 
     # Test the project
     - script:
