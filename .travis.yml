@@ -11,5 +11,6 @@ before_install:
 install:
   - go get github.com/tools/godep
 script:
+  - if [[ $(go version |grep 1.5) ]]; then export GO15VENDOREXPERIMENT=1 ; fi
   - make all
   - make test
