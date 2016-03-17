@@ -4,12 +4,13 @@ sudo: required
 go:
   - 1.5
 before_install:
-  - go get github.com/tools/godep
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
   - sudo apt-get -qq update
   - sudo apt-get install -y bash bison curl nodejs
   - sudo npm install bower -g
 install:
+  - go get github.com/tools/godep
+  - export PATH="${PATH}:${GOPATH}/bin"
   - rm -rf Godeps/_workspace/src/github.com/shipyard/
   - mkdir -p Godeps/_workspace/src/github.com/shipyard/
   - ln -s `pwd` Godeps/_workspace/src/github.com/shipyard/shipyard
