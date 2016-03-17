@@ -10,10 +10,6 @@ before_install:
   - sudo npm install bower -g
 install:
   - go get github.com/tools/godep
-  - export PATH="${PATH}:${GOPATH}/bin"
-  - rm -rf Godeps/_workspace/src/github.com/shipyard/
-  - mkdir -p Godeps/_workspace/src/github.com/shipyard/
-  - ln -s `pwd` Godeps/_workspace/src/github.com/shipyard/shipyard
 script:
   - make all
   - make test
