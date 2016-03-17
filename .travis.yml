@@ -1,11 +1,15 @@
+go_import_path: github.com/shipyard/shipyard
 language: go
 sudo: false
 go:
   - 1.4
   - 1.5
+before_install:
+  - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
+  - sudo apt-get -qq update
+  - sudo apt-get install -y bash bison curl nodejs
+  - sudo npm install bower -g
 install:
-    - go get -d ./...
-    - go get -d github.com/stretchr/testify/assert
-    - go get github.com/tools/godep
 script:
-    - bash test.sh
+  - make all
+  - make test
