@@ -13,7 +13,7 @@ box: golang
 services:
     - id: rethinkdb
 #          tag: latest
-    - id: swarm
+#    - id: swarm
       
     # - postgres
     # http://devcenter.wercker.com/docs/services/postgresql.html
