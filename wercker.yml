@@ -40,7 +40,7 @@ build:
           bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
           apt-get update && apt-get install -y bash curl bison nodejs
           npm install bower -g
-
+          go get github.com/tools/godep
     # Build the project
     - script:
         name: go build 
