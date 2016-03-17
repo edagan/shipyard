@@ -8,10 +8,6 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y bash bison curl nodejs
   - sudo npm install bower -g
-  - mkdir ${GOPATH}/src/golang.org/x/
-  - cd ${GOPATH}/src/golang.org/x/
-  - git clone https://github.com/golang/crypto.git
-  - cd ${GOPATH}
   - export PATH="${PATH}:${GOPATH}/bin"
 install:
   - rm -rf Godeps/_workspace/src/github.com/shipyard/
