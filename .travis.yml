@@ -12,10 +12,11 @@ before_install:
   - cd ${GOPATH}/src/golang.org/x/
   - git clone https://github.com/golang/crypto.git
   - cd ${GOPATH}
+  - export PATH="${PATH}:${GOPATH}/bin"
 install:
-    - go get -d ./...
-    - go get -d github.com/stretchr/testify/assert
-    - go get github.com/tools/godep
+  - rm -rf Godeps/_workspace/src/github.com/shipyard/
+  - mkdir -p Godeps/_workspace/src/github.com/shipyard/
+  - ln -s `pwd` Godeps/_workspace/src/github.com/shipyard/shipyard
 script:
   - make all
   - make test
