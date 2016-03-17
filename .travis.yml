@@ -9,6 +9,9 @@ before_install:
   - sudo apt-get install -y bash bison curl nodejs
   - sudo npm install bower -g
 install:
+    - go get -d ./...
+    - go get -d github.com/stretchr/testify/assert
+    - go get github.com/tools/godep
 script:
   - make all
   - make test
