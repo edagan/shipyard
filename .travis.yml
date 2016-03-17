@@ -1,8 +1,7 @@
 go_import_path: github.com/shipyard/shipyard
 language: go
-sudo: false
+sudo: required
 go:
-  - 1.4
   - 1.5
 before_install:
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
