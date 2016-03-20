@@ -17,7 +17,7 @@ before_install:
  #  install nodejs and bower
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
   - sudo apt-get -qq update
-  - sudo apt-get install -y bash bison curl nodejs docker-engin
+  - sudo apt-get install -y bash bison curl nodejs docker-engine
   - sudo npm install bower -g
 # install docker-compose
 #  - sudo rm /usr/local/bin/docker-compose
