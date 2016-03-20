@@ -10,9 +10,10 @@ env:
 
 before_install:
 # add docker  1.10 
+  - sudo lsb_release -a
   - sudo touch /etc/apt/sources.list.d/docker.list
   - sudo chmod 777 /etc/apt/sources.list.d/docker.list
-  - sudo echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > /etc/apt/sources.list.d/docker.list
+  - sudo echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list
   - sudo chmod 775 /etc/apt/sources.list.d/docker.list
  #  install nodejs and bower
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
