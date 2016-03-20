@@ -5,16 +5,28 @@ go:
   - 1.5
 services:
   - docker
+env:
+  DOCKER_COMPOSE_VERSION: 1.6.0
+
 before_install:
+#  install nodejs and bower
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
   - sudo apt-get -qq update
   - sudo apt-get install -y bash bison curl nodejs
   - sudo npm install bower -g
-  - docker pull rethinkdb
-  - docker run -d -p 29015:29015 -p 28015:28015 -p 8087:8080 --name=rethinkdb --hostname=rethinkdb  -e no_proxy="localhost,127.0.0.1,proxy,swarm,media,rethinkdb" rethinkdb
+# install docker-compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+# pull the rethinkdb 
+#  - docker pull rethinkdb
+#  - docker run -d -p 29015:29015 -p 28015:28015 -p 8087:8080 --name=rethinkdb --hostname=rethinkdb  -e no_proxy="localhost,127.0.0.1,proxy,swarm,media,rethinkdb" rethinkdb
 install:
   - go get github.com/tools/godep
 script:
   - if [[ $(go version |grep 1.5) ]]; then export GO15VENDOREXPERIMENT=1 ; fi
   - make all
-  - make test
+  - docker-compose -f docker-compose.yml up -d
+#  - make test
+  - docker exec -it shipyard_controller_1 make test
