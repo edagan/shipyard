@@ -21,7 +21,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - sudo mv /etc/default/docker /etc/default/docker1
   - sudo chmod 775 /etc/apt/sources.list.d/docker.list
-  - sudo service docker start
   - sudo mv /etc/default/docker1 /etc/default/docker
   - apt-get install -y docker-engine < echo N
   - docker --version
