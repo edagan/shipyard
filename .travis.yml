@@ -3,32 +3,27 @@ language: go
 sudo: required
 go:
   - 1.5
-#services:
-  #- docker
+services:
+  - docker
 env:
   DOCKER_COMPOSE_VERSION: 1.6.0
 
 before_install:
-# add docker  1.10 
-  - sudo lsb_release -a
-  - sudo touch /etc/apt/sources.list.d/docker.list
-  - sudo chmod 777 /etc/apt/sources.list.d/docker.list
-  - sudo echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list
-  - sudo chmod 775 /etc/apt/sources.list.d/docker.list
  #  install nodejs and bower
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
   - sudo apt-get -qq update
-  - sudo apt-get install -y bash bison curl nodejs docker-engine
+  - sudo apt-get install -y bash bison curl nodejs
   - sudo npm install bower -g
 # install docker-compose
 #  - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-#  - sudo mv /etc/default/docker /etc/default/docker1
+  - sudo mv /etc/default/docker /etc/default/docker1
   - sudo chmod 775 /etc/apt/sources.list.d/docker.list
   - sudo service docker start
-#  - sudo mv /etc/default/docker1 /etc/default/docker
+  - sudo mv /etc/default/docker1 /etc/default/docker
+  - apt-get install -y docker-engine < echo N
   - docker --version
 # pull the rethinkdb 
 #  - docker pull rethinkdb
