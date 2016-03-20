@@ -66,6 +66,7 @@ build:
     - script:
         name: go test
         code: |
+          sudo service docker start
           sudo docker-compose -f docker-compose.yml up -d
           sudo docker exec -it shipyard_controller_1 make test
           env
