@@ -19,7 +19,9 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - sudo apt-get install -y docker-engine < N
+  - sudo mv /etc/default/docker /etc/default/docker1
+  - sudo apt-get install -y docker-engine
+  - sudo mv /etc/default/docker1 /etc/default/docker
   - docker --version
 # pull the rethinkdb 
 #  - docker pull rethinkdb
