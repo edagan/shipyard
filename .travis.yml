@@ -19,6 +19,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - sudo apt-get install docker-engine
+  - docker --version
 # pull the rethinkdb 
 #  - docker pull rethinkdb
 #  - docker run -d -p 29015:29015 -p 28015:28015 -p 8087:8080 --name=rethinkdb --hostname=rethinkdb  -e no_proxy="localhost,127.0.0.1,proxy,swarm,media,rethinkdb" rethinkdb
