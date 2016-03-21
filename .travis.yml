@@ -18,7 +18,7 @@ before_install:
 #  - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
-  - sudo ln -s docker-compose /usr/local/bin/docker-compose
+  - sudo mv docker-compose /usr/local/bin/
   - curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
   - curl -fsSL https://get.docker.com/ | sudo sh
 #  - sudo mv /etc/default/docker /etc/default/docker1 
