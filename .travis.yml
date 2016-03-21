@@ -19,12 +19,13 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin/
-  - sudo mv /etc/default/docker /etc/default/docker1 
-  - curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
-  - curl -fsSL https://get.docker.com/ > installDocker.sh
-  - chmod 775 installDocker.sh
-  - yes n| sudo sh ./installDocker.sh
-  - sudo mv /etc/default/docker1 /etc/default/docker
+  #- sudo mv /etc/default/docker /etc/default/docker1 
+  #- curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
+  - printf 'N' | apt-get install -y docker-engine 
+#  - curl -fsSL https://get.docker.com/ > installDocker.sh
+  #- chmod 775 installDocker.sh
+  #- yes n| sudo sh ./installDocker.sh
+  #- sudo mv /etc/default/docker1 /etc/default/docker
 #  
 #  - sudo chmod 775 /etc/apt/sources.list.d/docker.list 
 #  - yes n|apt-get install -y docker-engine 
