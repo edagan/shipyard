@@ -7,11 +7,7 @@ services:
   - docker
 env:
   DOCKER_COMPOSE_VERSION: 1.6.0
-  
 global:
-    - BRANCH=v1.10.3
-    - DOCKER_STORAGE_DRIVER=aufs
-    - UML_DOCKERCOMPOSE=0
 before_install:
  #  install nodejs and bower
   - sudo bash < <(curl -s -S -L https://deb.nodesource.com/setup_5.x)
@@ -22,7 +18,9 @@ before_install:
 #  - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
-#  - sudo mv docker-compose /usr/local/bin
+  - sudo ln -s docker-compose /usr/local/bin/docker-compose
+  - curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
+  - curl -fsSL https://get.docker.com/ | sudo sh
 #  - sudo mv /etc/default/docker /etc/default/docker1 
 #  - sudo chmod 775 /etc/apt/sources.list.d/docker.list 
 #  - yes n|apt-get install -y docker-engine 
@@ -32,11 +30,10 @@ before_install:
 #  - docker pull rethinkdb
 #  - docker run -d -p 29015:29015 -p 28015:28015 -p 8087:8080 --name=rethinkdb --hostname=rethinkdb  -e no_proxy="localhost,127.0.0.1,proxy,swarm,media,rethinkdb" rethinkdb
 install:
-  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
   - go get github.com/tools/godep
 script:
   - if [[ $(go version |grep 1.5) ]]; then export GO15VENDOREXPERIMENT=1 ; fi
   - make all
-  - ./run docker-compose -f docker-compose.yml up -d
+  - docker-compose -f docker-compose.yml up -d
 #  - make test
-  - ./run docker exec -it shipyard_controller_1 make test
+  - docker exec -it shipyard_controller_1 make test
